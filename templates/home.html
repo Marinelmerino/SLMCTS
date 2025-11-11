@@ -1,30 +1,107 @@
- <!--
-  Home Page -- Default page, root, regardless of the user if logged in or not
-  
-  displays: 
-    sign up and sign in button; 
-    loan application options; 
-    sign up and sign in in modal if kaya, 
-    site description; eme eme like "Over 10M active users" etc.
- -->
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="{{ url_for('static', path='css/home.css') }}">
-  <title>{{ title }}</title>
+  <title>{{ title or "SBFC Smart Loan Management System" }}</title>
 </head>
 <body>
 
-  <header>
+  <header class="header">
+    <div class="container">
+      <h1 class="logo">SBFC Smart Loan Management System</h1>
+      <nav>
+        <button class="btn" id="loginBtn">Sign In</button>
+        <button class="btn btn-outline" id="signupBtn">Sign Up</button>
+      </nav>
+    </div>
   </header>
 
   <main>
+    <section class="hero">
+      <div class="hero-content">
+        <h2>Empowering Smarter Financial Connections</h2>
+        <p>Experience a seamless and secure way to manage, track, and grow your loans with the SBFC Smart Loan Management System — where efficiency meets innovation.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" id="applyLoanBtn">Apply for a Loan</button>
+          <button class="btn-outline">Discover More</button>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div><h3>10K+</h3><p>Trusted Clients</p></div>
+        <div><h3>98%</h3><p>Approval Accuracy</p></div>
+        <div><h3>24/7</h3><p>Secure Access</p></div>
+      </div>
+    </section>
+
+    <section class="features">
+      <h2>Why Choose SBFC Smart Loan?</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>Smart Processing</h3>
+          <p>Automate every step — from application to approval — with real-time decision-making powered by technology.</p>
+        </div>
+        <div class="feature">
+          <h3>Reliable and Secure</h3>
+          <p>We protect every transaction and record with cutting-edge encryption and secure data management.</p>
+        </div>
+        <div class="feature">
+          <h3>Transparent Tracking</h3>
+          <p>Stay informed with real-time updates, reminders, and an easy-to-navigate dashboard built for users and admins alike.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about">
+      <h2>Building Trust, One Loan at a Time</h2>
+      <p>SBFC Smart Loan Management is designed to simplify lending for financial institutions and clients. With a focus on automation, accuracy, and accessibility, we ensure a smoother experience — helping individuals achieve their financial goals faster and smarter.</p>
+    </section>
   </main>
-  
+
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Sign In</h2>
+      <form>
+        <input type="text" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="btn-primary">Login</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2>Create Your Account</h2>
+      <form>
+        <input type="text" placeholder="Full Name" required>
+        <input type="email" placeholder="Email" required>
+        <input type="password" placeholder="Password" required>
+        <button type="submit" class="btn-primary">Sign Up</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const loginBtn = document.getElementById('loginBtn');
+    const signupBtn = document.getElementById('signupBtn');
+    const loginModal = document.getElementById('loginModal');
+    const signupModal = document.getElementById('signupModal');
+    const closes = document.querySelectorAll('.close');
+
+    loginBtn.onclick = () => loginModal.style.display = 'block';
+    signupBtn.onclick = () => signupModal.style.display = 'block';
+    closes.forEach(c => c.onclick = () => {
+      loginModal.style.display = 'none';
+      signupModal.style.display = 'none';
+    });
+    window.onclick = e => {
+      if (e.target === loginModal) loginModal.style.display = 'none';
+      if (e.target === signupModal) signupModal.style.display = 'none';
+    };
+  </script>
+
 </body>
 </html>
