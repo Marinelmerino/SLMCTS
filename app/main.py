@@ -27,7 +27,7 @@ app.include_router(users.router, prefix="/users", tags=["Users"])
 @app.get("/")
 async def root():
     return {
-        "message": "Welcome to SBFC Loan Management System ",
+        "message": "Welcome to SBFC Smart Loan Management System",
         "docs": "/docs",
         "redoc": "/redoc"
     }
