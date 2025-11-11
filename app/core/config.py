@@ -2,7 +2,7 @@ from pydantic_settings import BaseSettings
 from typing import Optional
 
 class Settings(BaseSettings):
-    APP_NAME: str = "SBFC Smart Loan Management – Smarter Banking, Faster Connections"
+    APP_NAME: str = "SBFC Smart Loan Management System"
     DEBUG: bool = False
 
     DATABASE_URL: str = "sqlite:///./sbfc_smart_loan.db"
